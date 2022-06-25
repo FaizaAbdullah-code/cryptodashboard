@@ -11,8 +11,8 @@ const App = () => {
   const [events, setEvents] = useState([]);
   const [rates, setRates] = useState([]);
   // zzconst [chartData, setChartData] = useState('');
-  const [pieData, setPieData] = useState('');
-  // const [quoteData, setQuoteData] = useState('');
+  // const [pieData, setPieData] = useState('');
+  const [quoteData, setQuoteData] = useState('');
 
   const getTokenHolders = async () => {
     const holderUrl =
@@ -40,7 +40,7 @@ const App = () => {
     const parsedData = await response.json();
     // console.log(parsedData.items);
     setEvents(parsedData.data.items);
-    console.log(parsedData.data.items);
+    // console.log(parsedData.data.items);
   };
 
   const getRateRequest = async () => {
@@ -98,37 +98,37 @@ const App = () => {
   //   });
   // };
 
-  // const fetchQuote = async () => {
-  //   const response = await fetch(
-  //     "https://api.covalenthq.com/v1/1/address/0x0f51bb10119727a7e5ea3538074fb341f56b09ad/transactions_v2/?key=ckey_3ef3cefb5f2447cabfdc7d26599&page-size=10"
-  //   );
-  //   const parsedData = await response.json();
-  //   // console.log(parsedData.data.items);
-  //   setQuoteData({
-  //     labels:parsedData.data.items.map((crypto) => crypto.gas_quote_rate),
-  //     datasets: [
-  //       {
-  //         label: "Price in USD",
-  //         data:parsedData.data.items.map((crypto) => crypto.gas_quote),
+  const fetchQuote = async () => {
+    const response = await fetch(
+      "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-25&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
+    );
+    const parsedData = await response.json();
+    console.log(parsedData.data[0].prices[0].price);
+    setQuoteData({
+      labels:parsedData.data[0].prices[0].map((crypto) => crypto.price),
+      datasets: [
+        {
+          label: "Price in USD",
+          data:parsedData.data[0].prices[0].map((crypto) => crypto.date),
 
-  //         borderColor: ["yellow"],
-  //         borderWidth: 1,
-  //         scales: {
-  //           yAxes: [
-  //             {
-  //               ticks: {
-  //                 fontColor: "green",
-  //                 fontSize: 18,
-  //                 // beginAtZero: true,
-  //               },
-  //             },
-  //           ],
-  //         },
-  //         backgroundColor: "rgba(184, 185, 210, .3)",
-  //       },
-  //     ],
-  //   });
-  // };
+          borderColor: ["yellow"],
+          borderWidth: 1,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  fontColor: "green",
+                  fontSize: 18,
+                  // beginAtZero: true,
+                },
+              },
+            ],
+          },
+          backgroundColor: "rgba(184, 185, 210, .3)",
+        },
+      ],
+    });
+  };
 
   // const fetchDate = async () => {
   //   const response = await fetch(
@@ -164,7 +164,7 @@ const App = () => {
     getEvent();
     getRateRequest();
     // fetchPrices();
-    // fetchQuote();
+    fetchQuote();
     // fetchDate();
   }, []);
 
@@ -179,7 +179,7 @@ const App = () => {
         rates={rates}
         // chartData={chartData}
         // pieData={pieData}
-        // quoteData={quoteData}
+        quoteData={quoteData}
       />
     </>
   );

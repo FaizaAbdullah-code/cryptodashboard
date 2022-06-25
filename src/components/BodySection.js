@@ -28,7 +28,9 @@ const BodySection = (props) => {
                       View More <i className="fa fa-arrow-circle-right"></i>
                     </a>
                   </div>
+                  
                 </div>
+                
               );
             })}
           </div>
@@ -45,6 +47,14 @@ const BodySection = (props) => {
           </div>
         </div>
       </section> */}
+
+        <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
+        <div className="row">
+          <div className="col-6">
+            <div>{props.quoteData && <Bar data={props.quoteData} />}</div>
+          </div>
+        </div>
+      </section>
 
       <section
         className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2"
