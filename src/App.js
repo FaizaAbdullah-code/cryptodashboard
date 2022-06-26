@@ -103,13 +103,13 @@ const App = () => {
       "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-25&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
     );
     const parsedData = await response.json();
-    console.log(parsedData.data[0].prices[0].price);
+    // console.log(parsedData.data[0].prices[0].price);
     setQuoteData({
-      labels:parsedData.data[0].prices[0].map((crypto) => crypto.price),
+      labels:parsedData.data[0].prices.map((crypto) => crypto.price),
       datasets: [
         {
           label: "Price in USD",
-          data:parsedData.data[0].prices[0].map((crypto) => crypto.date),
+          data:parsedData.data[0].prices.map((crypto) => crypto.date),
 
           borderColor: ["yellow"],
           borderWidth: 1,
