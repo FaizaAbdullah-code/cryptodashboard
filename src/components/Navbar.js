@@ -13,7 +13,7 @@ const Navbar = (props) => {
             height="44"
             className="d-inline-block align-text-center me-2"
           />
-          DAO Analytics
+          Covalent Analytics
         </a>
         <button
           className="navbar-toggler position-absolute d-md-none collapsed"
