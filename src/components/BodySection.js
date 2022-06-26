@@ -35,24 +35,24 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
-        <div className="row">
-          <div className="col-sm-6">
-            <div>{props.chartData && <Line data={props.chartData} />}</div>
-          </div>
-          <div className="col-6">
-            <div>{props.quoteData && <Bar data={props.quoteData} />}</div>
-          </div>
-        </div>
-      </section> */}
-
       <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
         <div className="row">
+          <div className="col-sm-6">
+            <div>{props.volData && <Line data={props.volData} />}</div>
+          </div>
           <div className="col-6">
             <div>{props.quoteData && <Line data={props.quoteData} />}</div>
           </div>
         </div>
       </section>
+
+      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
+        <div className="row">
+          <div className="col-6">
+            <div>{props.quoteData && <Line data={props.quoteData} />}</div>
+          </div>
+        </div>
+      </section> */}
 
       <section
         className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2"
@@ -60,18 +60,27 @@ const BodySection = (props) => {
       >
         <div className="row py-3">
           <h1 style={{ color: "white", textAlign: "center" }}>
-            Top 10 DAO Token Holders
+            Top 10 Transactions
           </h1>
-          <div className="col-sm-8">
+          <div className="col-sm">
             <div className="table-responsive">
               <table className="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col" style={{ color: "#f2b92c" }}>
-                      tx_hash
+                      from_address
                     </th>
                     <th scope="col" style={{ color: "#f2b92c" }}>
-                      price
+                      to_address
+                    </th>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      gas_price
+                    </th>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      gas_quote
+                    </th>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      gas_quote_rate
                     </th>
                   </tr>
                 </thead>
@@ -79,8 +88,64 @@ const BodySection = (props) => {
                   return (
                     <tbody>
                       <tr>
-                        <td>{token.tx_hash}</td>
+                        <td>{token.from_address}</td>
+                        <td>{token.to_address}</td>
                         <td>{token.gas_price}</td>
+                        <td>{token.gas_quote}</td>
+                        <td>{token.gas_quote_rate}</td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2"
+        id="networkExTkTable"
+      >
+        <div className="row py-3">
+          <h1 style={{ color: "white", textAlign: "center" }}>
+            Network Exchange Tokens on uniswap_v2
+          </h1>
+          <div className="col-sm">
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      Contract Name
+                    </th>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      contract_address
+                    </th>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      total_liquidity
+                    </th>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      total_volume_24h
+                    </th>
+                    <th scope="col" style={{ color: "#f2b92c" }}>
+                      swap_count_24h
+                    </th>
+                  </tr>
+                </thead>
+                {props.networkExTk.map((netExTk) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        {/* <td></td> */}
+                        <td>
+                          {netExTk.contract_name} (
+                          {netExTk.contract_ticker_symbol})
+                        </td>
+                        <td>{netExTk.contract_address}</td>
+                        <td>{netExTk.total_liquidity}</td>
+                        <td>{netExTk.total_volume_24h}</td>
+                        <td>{netExTk.swap_count_24h}</td>
                       </tr>
                     </tbody>
                   );

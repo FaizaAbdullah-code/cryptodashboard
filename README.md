@@ -1,3 +1,4 @@
+2 charts and 2 tables finalized
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

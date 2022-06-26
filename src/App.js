@@ -10,9 +10,11 @@ const App = () => {
   const [tokens, setTokens] = useState([]);
   const [events, setEvents] = useState([]);
   const [rates, setRates] = useState([]);
+  const [networkExTk, setNetworkExTk] = useState([]);
   // zzconst [chartData, setChartData] = useState('');
   // const [pieData, setPieData] = useState('');
-  const [quoteData, setQuoteData] = useState('');
+  const [quoteData, setQuoteData] = useState("");
+  const [volData, setVolData] = useState("");
 
   const getTokenHolders = async () => {
     const holderUrl =
@@ -22,7 +24,6 @@ const App = () => {
     setHolders(parsedData.data.items);
   };
 
-  
   const getToken = async () => {
     const tokenUrl =
       "https://api.covalenthq.com/v1/1/address/0xD417144312DbF50465b1C641d016962017Ef6240/transactions_v2/?key=ckey_3ef3cefb5f2447cabfdc7d26599&page-size=10";
@@ -51,6 +52,16 @@ const App = () => {
     // console.log(parsedData.data.items);
     setRates(parsedData.data.items);
     // console.log(parsedData.data);
+  };
+
+  const getNetworkExTkRequest = async () => {
+    const rateUrl =
+      "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/tokens/?key=ckey_3ef3cefb5f2447cabfdc7d26599";
+    const response = await fetch(rateUrl);
+    const parsedData = await response.json();
+    
+    setNetworkExTk(parsedData.data.items);
+    console.log(parsedData.data.items);
   };
 
   // const fetchPrices = async () => {
@@ -101,22 +112,65 @@ const App = () => {
 
   const fetchQuote = async () => {
     const response = await fetch(
-      "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-25&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
+      "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-26&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
     );
     const parsedData = await response.json();
     // console.log(parsedData.data[0].prices);
     setQuoteData({
-      labels:parsedData.data[0].prices.map((crypto) => new Date(crypto.date).toLocaleDateString()),
+      labels: parsedData.data[0].prices.map((crypto) =>
+        new Date(crypto.date).toLocaleDateString()
+      ),
       datasets: [
         {
           label: "Price in USD",
-          data:parsedData.data[0].prices.map((crypto) => crypto.price),
+          data: parsedData.data[0].prices.map((crypto) => crypto.price),
 
           borderColor: ["yellow"],
           borderWidth: 2,
           fill: {
-            target: 'origin',
-            above: 'blue',   // Area will be red above the origin
+            target: "origin",
+            above: "blue", // Area will be red above the origin
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  fontColor: "green",
+                  fontSize: 18,
+                  // beginAtZero: true,
+                },
+              },
+            ],
+          },
+          backgroundColor: "rgba(184, 185, 210, .3)",
+        },
+      ],
+    });
+  };
+
+  const fetchVol = async () => {
+    const response = await fetch(
+      "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/ecosystem/?key=ckey_3ef3cefb5f2447cabfdc7d26599"
+    );
+    const parsedData = await response.json();
+    // console.log(parsedData.data.items[0].volume_chart_30d);
+    setVolData({
+      labels: parsedData.data.items[0].volume_chart_30d.map((crypto) =>
+        new Date(crypto.dt).toLocaleDateString()
+      ),
+      datasets: [
+        {
+          label: "Volume in USD",
+          data: parsedData.data.items[0].volume_chart_30d.map(
+            (crypto) => crypto.volume_quote
+          ),
+
+          borderColor: ["yellow"],
+          borderWidth: 2,
+          fill: {
+            target: "origin",
+            above: "green",
+            below: "red", // Area will be red above the origin
           },
           scales: {
             yAxes: [
@@ -168,8 +222,10 @@ const App = () => {
     getToken();
     getEvent();
     getRateRequest();
+    getNetworkExTkRequest();
     // fetchPrices();
     fetchQuote();
+    fetchVol();
     // fetchDate();
   }, []);
 
@@ -182,9 +238,11 @@ const App = () => {
         tokens={tokens}
         events={events}
         rates={rates}
+        networkExTk={networkExTk}
         // chartData={chartData}
         // pieData={pieData}
         quoteData={quoteData}
+        volData={volData}
       />
     </>
   );
