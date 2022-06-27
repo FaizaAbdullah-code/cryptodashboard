@@ -11,7 +11,7 @@ const BodySection = (props) => {
             {props.rates.map((rate) => {
               return (
                 <div className="col-lg-3 col-sm-6" key={rate.id}>
-                  <div className="card-box">
+                  <div className="card-box shadow-lg">
                     <div className="inner">
                       <h3>${rate.quote_rate}</h3>
                       <p>
@@ -37,11 +37,11 @@ const BodySection = (props) => {
 
       <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
         <div className="row">
-          <div className="col-sm-6">
-            <div>{props.volData && <Line data={props.volData} />}</div>
+          <div className="col-sm-5 m-2 bg shadow-lg p-3 mb-5 rounded">
+            <div>{props.volData && <Line data={props.volData} height={220}/>}</div>
           </div>
-          <div className="col-6">
-            <div>{props.quoteData && <Line data={props.quoteData} />}</div>
+          <div className="col-5 m-2 bg shadow-lg p-3 mb-5 rounded">
+            <div>{props.quoteData && <Line data={props.quoteData} height={220} />}</div>
           </div>
         </div>
       </section>
@@ -55,10 +55,10 @@ const BodySection = (props) => {
       </section> */}
 
       <section
-        className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2"
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-5 mt-5 tableBg"
         id="tokenTable"
       >
-        <div className="row py-3">
+        <div className="row">
           <h1 style={{ color: "white", textAlign: "center" }}>
             Top 10 Transactions
           </h1>
@@ -67,19 +67,19 @@ const BodySection = (props) => {
               <table className="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       from_address
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       to_address
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       gas_price
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       gas_quote
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       gas_quote_rate
                     </th>
                   </tr>
@@ -104,7 +104,7 @@ const BodySection = (props) => {
       </section>
 
       <section
-        className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2"
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-2 mt-5 tableBg"
         id="networkExTkTable"
       >
         <div className="row py-3">
@@ -116,19 +116,19 @@ const BodySection = (props) => {
               <table className="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       Contract Name
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       contract_address
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       total_liquidity
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       total_volume_24h
                     </th>
-                    <th scope="col" style={{ color: "#f2b92c" }}>
+                    <th scope="col" style={{ color: "blue" }}>
                       swap_count_24h
                     </th>
                   </tr>
@@ -156,17 +156,45 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-5 py-3">
+      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2 tableBg mt-5">
+        <div className="col-sm-5">
+          <div className="table-responsive">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" style={{ color: "blue" }}>
+                   Chain ID
+                  </th>
+                  <th scope="col" style={{ color: "blue" }}>
+                  Name
+                  </th>
+                </tr>
+              </thead>
+              {props.holders.map((holder) => {
+                return (
+                  <tbody>
+                    <tr>
+                      <td>{holder.chain_id}</td>
+                      <td>{holder.name}</td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
+          </div>
+        </div>
+      </section>
+      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-5 py-3">
         <div className="container mt-5">
           <div className="row">
             {props.holders.map((holder) => {
               return (
-                <div className="col-lg-3 col-sm-6">
+                <div className="col-lg-3 col-sm-6 text-white">
                   <div className="address-sec">
                     <div className="address-box">
                       <div className="inner">
-                        <p className="address">{holder.name}</p>
-                        <h6>{holder.chain_id}</h6>
+                        <p className="address"></p>
+                        <h6></h6>
                       </div>
                       <div className="icon">
                         <i className="fas fa-wallet" aria-hidden="true"></i>
@@ -178,18 +206,18 @@ const BodySection = (props) => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2">
-        <div className="col-sm-8">
+      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2 mt-5 tableBg">
+        <div className="col-sm-6">
           <div className="table-responsive">
             <table className="table table-hover">
               <thead>
                 <tr>
-                  <th scope="col" style={{ color: "#f2b92c" }}>
+                  <th scope="col" style={{ color: "blue" }}>
                     sender name
                   </th>
-                  <th scope="col" style={{ color: "#f2b92c" }}>
+                  <th scope="col" style={{ color: "blue" }}>
                     sender address
                   </th>
                 </tr>

@@ -110,7 +110,9 @@ const App = () => {
   //   });
   // };
 
+ 
   const fetchQuote = async () => {
+    
     const response = await fetch(
       "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-26&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
     );
@@ -118,35 +120,47 @@ const App = () => {
     // console.log(parsedData.data[0].prices);
     setQuoteData({
       labels: parsedData.data[0].prices.map((crypto) =>
+        
         new Date(crypto.date).toLocaleDateString()
       ),
       datasets: [
         {
           label: "Price in USD",
           data: parsedData.data[0].prices.map((crypto) => crypto.price),
+          
+          options: {
+            plugins: {
+                filler: {
+                    propagate: true
+                }
+            }
+        },
 
-          borderColor: ["yellow"],
-          borderWidth: 2,
-          fill: {
-            target: "origin",
-            above: "blue", // Area will be red above the origin
-          },
+        borderColor: 'red',
+        pointBackgroundColor: "#de8e8e",
+        pointBorderColor: "red",
+        pointHoverBackgroundColor: "#de8e8e",
+        pointHoverBorderColor: "#4d869f",
+        pointRadius: 4,
+        pointHoverRadius: 4,
+        fill: false,
+        borderWidth: 2,
           scales: {
             yAxes: [
               {
                 ticks: {
                   fontColor: "green",
                   fontSize: 18,
-                  // beginAtZero: true,
                 },
               },
             ],
           },
-          backgroundColor: "rgba(184, 185, 210, .3)",
         },
       ],
     });
   };
+
+
 
   const fetchVol = async () => {
     const response = await fetch(
@@ -160,32 +174,35 @@ const App = () => {
       ),
       datasets: [
         {
+
           label: "Volume in USD",
           data: parsedData.data.items[0].volume_chart_30d.map(
             (crypto) => crypto.volume_quote
           ),
 
-          borderColor: ["yellow"],
+          borderColor: 'blue',
+            pointBackgroundColor: "#4d869f",
+            pointBorderColor: "blue",
+            pointHoverBackgroundColor: "#4d869f",
+            pointHoverBorderColor: "#fff",
+            pointRadius: 4,
+            pointHoverRadius: 4,
+            fill: false,
           borderWidth: 2,
-          fill: {
-            target: "origin",
-            above: "green",
-            below: "red", // Area will be red above the origin
-          },
           scales: {
             yAxes: [
               {
                 ticks: {
                   fontColor: "green",
                   fontSize: 18,
-                  // beginAtZero: true,
                 },
               },
             ],
+          
           },
-          backgroundColor: "rgba(184, 185, 210, .3)",
         },
       ],
+      
     });
   };
 

@@ -1,9 +1,15 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div>
       <div className="container-fluid">
+        
         <div className="row">
           <nav
             id="sidebarMenu"

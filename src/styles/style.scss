@@ -1,13 +1,21 @@
-$primary-color: white;
-$secondary-color: #121212;
-$third-color: #f2b92c;
+$primary-color: #ffff;
+$secondary-color:#1e1e67;
+$third-color: #271447;
+// $third-color: #7b1975;
+$forth-color:#2c2f4c;
+$fifth-color:#e5b7b7;
 
 body {
   font-size: 0.875rem;
-  background-color: rgba(18, 18, 18, 0.95);
+  background-color: #eef1f0;
   @media (max-width:911px) {
     display:none;
   }
+}
+
+.bg{
+  background-color: $primary-color;
+  border-radius: 10px;
 }
 
 .sidebar {
@@ -18,7 +26,7 @@ body {
   z-index: 100; /* Behind the navbar */
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
-  background: $secondary-color;
+  background: $forth-color;
 
 }
 
@@ -58,7 +66,7 @@ body {
 }
 
 .sidebar .nav-link.active {
-  background-color: $third-color;
+  background-color: $forth-color;
   border-radius: 10px;
   margin: 0 5px;
 }
@@ -127,22 +135,26 @@ body {
   }
 }
 
+
+
+.tableBg{
+  background-color: $primary-color;
 table.table tr th,
 table.table tr td {
-
-  color: white;
-  border-color: yellow;
+  border-color: blue;
   padding: 15px;
+  border: 1px solid #ddd;
 
-
+}
 
 }
 .card-box {
   position: relative;
-  background-color: rgb(242, 185, 44);
-  color: #fff;
+  background-color: $primary-color;
+  color: $forth-color;
   padding: 20px 10px 40px;
   margin: 20px 0px;
+  border: 1px solid $forth-color;
   border-radius: 10px;
   &:hover {
     text-decoration: none;
@@ -186,7 +198,7 @@ table.table tr td {
     text-align: center;
     padding: 3px 0;
     color: rgba(255, 255, 255, 0.8);
-    background: rgba(0, 0, 0, 0.1);
+    background: $forth-color;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     width: 100%;
