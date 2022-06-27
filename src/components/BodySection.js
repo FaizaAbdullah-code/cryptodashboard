@@ -19,10 +19,7 @@ const BodySection = (props) => {
                       </p>
                     </div>
                     <div className="icon">
-                      <i
-                        className="fas fa-hand-holding-usd"
-                        aria-hidden="true"
-                      ></i>
+                    <i className='fab fa-ethereum' style={{ color: "#1e1e67", fontSize:"50px" }}></i>
                     </div>
                     <a href="/" className="card-box-footer">
                       View more <i className="fa fa-arrow-circle-right"></i>
@@ -38,11 +35,13 @@ const BodySection = (props) => {
       <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 py-2">
         <div className="row d-flex justify-content-center">
           <div className="col-sm-5 me-3 bg-light shadow-md rounded">
+            <h3 className="text-center py-3">Volume by Date</h3>
             <div>
               {props.volData && <Line data={props.volData} height={220} />}
             </div>
           </div>
           <div className="col-sm-5 bg-light shadow-md rounded">
+          <h3 className="text-center py-3">Price by Date</h3>
             <div>
               {props.quoteData && <Line data={props.quoteData} height={220} />}
             </div>
@@ -170,9 +169,9 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        {props.pieData && <Line data={props.pieData} />}
-      </section> */}
+      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        {props.pieData && <Line data={props.pieData} height="100" />}
+      </section>
     </div>
   );
 };

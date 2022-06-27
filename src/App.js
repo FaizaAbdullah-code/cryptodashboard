@@ -17,6 +17,7 @@ const App = () => {
   // zzconst [chartData, setChartData] = useState('');
   // const [pieData, setPieData] = useState('');
   const [quoteData, setQuoteData] = useState("");
+  const [pieData, setPieData] = useState("");
   const [volData, setVolData] = useState("");
   const [swapData, setSwapData] = useState("");
 
@@ -66,6 +67,11 @@ const App = () => {
 
     setNetworkExTk(parsedData.data.items);
     console.log(parsedData.data.items);
+
+    // var y=1152154851449851;  //input value
+    // var x=1000000000000;  //divide by million
+    // var quotient = y/x; //2
+    // console.log(quotient);
   };
 
   // const fetchPrices = async () => {
@@ -130,18 +136,62 @@ const App = () => {
           data: parsedData.data[0].prices.map((crypto) => crypto.price),
 
           options: {
-            plugins: {
-              filler: {
-                propagate: true,
-              },
-            },
+            scales: {
+              y: [{
+                title: {
+                  display: true,
+                  text: 'Your Title'
+                }
+              }]
+            }     
           },
+          
+          // borderColor: "red",
+          // pointBackgroundColor: "#de8e8e",
+          // pointBorderColor: "red",
+          // pointHoverBackgroundColor: "#de8e8e",
+          // pointHoverBorderColor: "#4d869f",
+          // pointRadius: 4,
+          // pointHoverRadius: 4,
+          // fill: false,
+          // tension: 0.1,
+          // borderWidth: 2,
 
-          borderColor: "red",
-          pointBackgroundColor: "#de8e8e",
-          pointBorderColor: "red",
-          pointHoverBackgroundColor: "#de8e8e",
-          pointHoverBorderColor: "#4d869f",
+          // scales: {
+          //   yAxes: [{
+          //     scaleLabel: {
+          //       display: true,
+          //       labelString: 'Month'
+
+          //     },
+          //   }]
+          // },
+        },
+      ],
+    });
+  };
+
+  const pieChart = async () => {
+    const response = await fetch(
+      "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/ecosystem/?key=ckey_3ef3cefb5f2447cabfdc7d26599"
+    );
+    const parsedData = await response.json();
+    // console.log(parsedData.data.items[0].volume_chart_30d);
+    setPieData({
+      labels: parsedData.data[0].prices.map((crypto) =>
+        new Date(crypto.date).toLocaleDateString()
+      ),
+      datasets: [
+        {
+          label: "Price",
+          data: parsedData.data[0].prices.map((crypto) => crypto.price),
+
+          type: 'doughnut',
+          borderColor: "#4d869f",
+          pointBackgroundColor: "blue",
+          pointBorderColor: "#4d869f",
+          pointHoverBackgroundColor: "blue",
+          pointHoverBorderColor: "#fff",
           pointRadius: 4,
           pointHoverRadius: 4,
           fill: false,
@@ -161,6 +211,8 @@ const App = () => {
       ],
     });
   };
+
+
 
   const fetchVol = async () => {
     const response = await fetch(
@@ -204,6 +256,8 @@ const App = () => {
     });
   };
 
+
+
   const fetchSwap = async () => {
     const response = await fetch(
       "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/ecosystem/?key=ckey_3ef3cefb5f2447cabfdc7d26599"
@@ -245,6 +299,9 @@ const App = () => {
     });
   };
 
+
+
+
   // const fetchDate = async () => {
   //   const response = await fetch(
   //     "https://api.covalenthq.com/v1/1/address/0xD417144312DbF50465b1C641d016962017Ef6240/portfolio_v2/?&key=ckey_3ef3cefb5f2447cabfdc7d26599"
@@ -283,6 +340,7 @@ const App = () => {
     fetchQuote();
     fetchVol();
     fetchSwap();
+    pieChart();
     // fetchDate();
   }, []);
 
@@ -304,7 +362,7 @@ const App = () => {
               events={events}
               rates={rates}
               // chartData={chartData}
-              // pieData={pieData}
+              pieData={pieData}
               quoteData={quoteData}
               volData={volData}
               swapData={swapData}

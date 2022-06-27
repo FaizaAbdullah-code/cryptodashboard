@@ -37,6 +37,7 @@ function NetworkExTk(props) {
                   </tr>
                 </thead>
                 {props.networkExTk.map((netExTk) => {
+                 
                   return (
                     <tbody>
                       <tr>
