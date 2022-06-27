@@ -1,9 +1,12 @@
-import "./App.css";
 import "./styles/css/style.min.css";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import BodySection from "./components/BodySection";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NetworkExTk from "./components/NetworkExTk";
+import Footer from "./components/Footer";
+import ChainID from "./components/ChainID";
 
 const App = () => {
   const [holders, setHolders] = useState([]);
@@ -60,7 +63,7 @@ const App = () => {
       "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/tokens/?key=ckey_3ef3cefb5f2447cabfdc7d26599";
     const response = await fetch(rateUrl);
     const parsedData = await response.json();
-    
+
     setNetworkExTk(parsedData.data.items);
     console.log(parsedData.data.items);
   };
@@ -111,41 +114,39 @@ const App = () => {
   //   });
   // };
 
- 
   const fetchQuote = async () => {
-    
     const response = await fetch(
-      "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-26&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
+      "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-27&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
     );
     const parsedData = await response.json();
     // console.log(parsedData.data[0].prices);
     setQuoteData({
       labels: parsedData.data[0].prices.map((crypto) =>
-        
         new Date(crypto.date).toLocaleDateString()
       ),
       datasets: [
         {
           label: "Price in USD",
           data: parsedData.data[0].prices.map((crypto) => crypto.price),
-          
+
           options: {
             plugins: {
-                filler: {
-                    propagate: true
-                }
-            }
-        },
+              filler: {
+                propagate: true,
+              },
+            },
+          },
 
-        borderColor: 'red',
-        pointBackgroundColor: "#de8e8e",
-        pointBorderColor: "red",
-        pointHoverBackgroundColor: "#de8e8e",
-        pointHoverBorderColor: "#4d869f",
-        pointRadius: 4,
-        pointHoverRadius: 4,
-        fill: false,
-        borderWidth: 2,
+          borderColor: "red",
+          pointBackgroundColor: "#de8e8e",
+          pointBorderColor: "red",
+          pointHoverBackgroundColor: "#de8e8e",
+          pointHoverBorderColor: "#4d869f",
+          pointRadius: 4,
+          pointHoverRadius: 4,
+          fill: false,
+          tension: 0.1,
+          borderWidth: 2,
           scales: {
             yAxes: [
               {
@@ -161,8 +162,6 @@ const App = () => {
     });
   };
 
-
-
   const fetchVol = async () => {
     const response = await fetch(
       "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/ecosystem/?key=ckey_3ef3cefb5f2447cabfdc7d26599"
@@ -175,20 +174,20 @@ const App = () => {
       ),
       datasets: [
         {
-
           label: "Volume in USD",
           data: parsedData.data.items[0].volume_chart_30d.map(
             (crypto) => crypto.volume_quote
           ),
-          type: 'line',
-          borderColor: 'blue',
-            pointBackgroundColor: "#4d869f",
-            pointBorderColor: "blue",
-            pointHoverBackgroundColor: "#4d869f",
-            pointHoverBorderColor: "#fff",
-            pointRadius: 4,
-            pointHoverRadius: 4,
-            fill: false,
+          type: "line",
+          borderColor: "blue",
+          pointBackgroundColor: "#4d869f",
+          pointBorderColor: "blue",
+          pointHoverBackgroundColor: "#4d869f",
+          pointHoverBorderColor: "#fff",
+          pointRadius: 4,
+          pointHoverRadius: 4,
+          fill: false,
+          tension: 0.1,
           borderWidth: 2,
           scales: {
             yAxes: [
@@ -199,11 +198,9 @@ const App = () => {
                 },
               },
             ],
-          
           },
         },
       ],
-      
     });
   };
 
@@ -219,20 +216,19 @@ const App = () => {
       ),
       datasets: [
         {
-
           label: "Swap count",
           data: parsedData.data.items[0].volume_chart_30d.map(
             (crypto) => crypto.swap_count_24
           ),
-          type: 'bar',
-          borderColor: 'blue',
-            pointBackgroundColor: "#4d869f",
-            pointBorderColor: "blue",
-            pointHoverBackgroundColor: "#4d869f",
-            pointHoverBorderColor: "#fff",
-            pointRadius: 4,
-            pointHoverRadius: 4,
-            fill: false,
+          type: "bar",
+          borderColor: "blue",
+          pointBackgroundColor: "#4d869f",
+          pointBorderColor: "blue",
+          pointHoverBackgroundColor: "#4d869f",
+          pointHoverBorderColor: "#fff",
+          pointRadius: 4,
+          pointHoverRadius: 4,
+          fill: false,
           borderWidth: 2,
           scales: {
             yAxes: [
@@ -243,15 +239,11 @@ const App = () => {
                 },
               },
             ],
-          
           },
         },
       ],
-      
     });
   };
-
-  
 
   // const fetchDate = async () => {
   //   const response = await fetch(
@@ -296,20 +288,31 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
-      <Sidebar />
-      <BodySection
-        holders={holders}
-        tokens={tokens}
-        events={events}
-        rates={rates}
-        networkExTk={networkExTk}
-        // chartData={chartData}
-        // pieData={pieData}
-        quoteData={quoteData}
-        volData={volData}
-        swapData={swapData}
-      />
+      <Router>
+        <Navbar />
+        <Sidebar />
+        <Switch>
+          <Route path="/network">
+            <NetworkExTk networkExTk={networkExTk} />
+          </Route>
+          <Route path="/chains">
+            <ChainID holders={holders} />
+          </Route>
+          <Route path="/">
+            <BodySection
+              tokens={tokens}
+              events={events}
+              rates={rates}
+              // chartData={chartData}
+              // pieData={pieData}
+              quoteData={quoteData}
+              volData={volData}
+              swapData={swapData}
+            />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </>
   );
 };

@@ -5,7 +5,7 @@ import { Line } from "react-chartjs-2";
 const BodySection = (props) => {
   return (
     <div>
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-5 py-3">
+      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-3 py-2">
         <div className="container mt-5">
           <div className="row">
             {props.rates.map((rate) => {
@@ -35,18 +35,20 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
-        <div className="row">
-          <div className="col-sm-5 m-5 bg shadow-lg rounded">
-            <div>{props.volData && <Line data={props.volData} height={220} />}</div>
+      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 py-2">
+        <div className="row d-flex justify-content-center">
+          <div className="col-sm-5 me-3 bg-light shadow-md rounded">
+            <div>
+              {props.volData && <Line data={props.volData} height={220} />}
+            </div>
           </div>
-          <div className="col-sm-5 m-5 bg shadow-lg rounded">
-            <div>{props.quoteData && <Line data={props.quoteData} height={220} />}</div>
+          <div className="col-sm-5 bg-light shadow-md rounded">
+            <div>
+              {props.quoteData && <Line data={props.quoteData} height={220} />}
+            </div>
           </div>
         </div>
       </section>
-
-
 
       {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
         <div className="row">
@@ -57,32 +59,35 @@ const BodySection = (props) => {
       </section> */}
 
       <section
-        className="col-md-9 ms-sm-auto col-lg-10 px-md-5 mt-5 tableBg"
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4"
         id="tokenTable"
       >
         <div className="row">
-          <h1 style={{ color: "black", textAlign: "center" }} className="py-5">
+          <h1
+            style={{ color: "#1e1e67", textAlign: "center" }}
+            className="py-2"
+          >
             Top 10 Transactions
           </h1>
           <div className="col-sm">
             <div className="table-responsive">
-              <table className="table table-hover">
+              <table className="table table-hover table-striped border border-primary border-1 rounded">
                 <thead>
                   <tr>
-                    <th scope="col" style={{ color: "blue" }}>
-                      from_address
+                    <th scope="col" style={{ color: "#2c2f4c" }}>
+                      From Address
                     </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      to_address
+                    <th scope="col" style={{ color: "#2c2f4c" }}>
+                      To Address
                     </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      gas_price
+                    <th scope="col" style={{ color: "#2c2f4c" }}>
+                      Gas Price
                     </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      gas_quote
+                    <th scope="col" style={{ color: "#2c2f4c" }}>
+                      Gas Quote
                     </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      gas_quote_rate
+                    <th scope="col" style={{ color: "#2c2f4c" }}>
+                      Gas Quote Rate
                     </th>
                   </tr>
                 </thead>
@@ -105,91 +110,6 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      <section
-        className="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-2 mt-5 tableBg"
-        id="networkExTkTable"
-      >
-        <div className="row py-3">
-          <h1 style={{ color: "black", textAlign: "center" }} className="py-5">
-            Network Exchange Tokens on uniswap_v2
-          </h1>
-          <div className="col-sm">
-            <div className="table-responsive">
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ color: "blue" }}>
-                      Contract Name
-                    </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      contract_address
-                    </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      total_liquidity
-                    </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      total_volume_24h
-                    </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      swap_count_24h
-                    </th>
-                  </tr>
-                </thead>
-                {props.networkExTk.map((netExTk) => {
-                  return (
-                    <tbody>
-                      <tr>
-                        {/* <td></td> */}
-                        <td>
-                          {netExTk.contract_name} (
-                          {netExTk.contract_ticker_symbol})
-                        </td>
-                        <td>{netExTk.contract_address}</td>
-                        <td>{netExTk.total_liquidity}</td>
-                        <td>{netExTk.total_volume_24h}</td>
-                        <td>{netExTk.swap_count_24h}</td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
-        <div className="row">
-
-          <div className="col-sm-5">
-            <div className="table-responsive">
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ color: "blue" }}>
-                      Chain ID
-                    </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      Name
-                    </th>
-                  </tr>
-                </thead>
-                {props.holders.map((holder) => {
-                  return (
-                    <tbody>
-                      <tr>
-                        <td>{holder.chain_id}</td>
-                        <td>{holder.name}</td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
       {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-5 py-3">
         <div className="container mt-5">
           <div className="row">
@@ -214,11 +134,8 @@ const BodySection = (props) => {
         </div>
       </section> */}
 
-
-
       <section className="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-3">
         <div className="row">
-
           <div className="col-sm-6">
             <div className="table-responsive tableBg shadow-lg p-3 rounded">
               <table className="table table-hover">
@@ -246,7 +163,9 @@ const BodySection = (props) => {
             </div>
           </div>
           <div className="col-sm-5 m-2 bg shadow-lg rounded">
-            <div>{props.swapData && <Line data={props.swapData} height={190} />}</div>
+            <div>
+              {props.swapData && <Line data={props.swapData} height={190} />}
+            </div>
           </div>
         </div>
       </section>
@@ -254,12 +173,6 @@ const BodySection = (props) => {
       {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         {props.pieData && <Line data={props.pieData} />}
       </section> */}
-
-      <footer className="page-footer font-small mt-5">
-        <div className="footer-copyright text-center py-3 ">
-          <a href="#! ">© 2021 - AE & Team </a>
-        </div>
-      </footer>
     </div>
   );
 };
