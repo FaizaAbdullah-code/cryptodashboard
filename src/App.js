@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NetworkExTk from "./components/NetworkExTk";
 import Footer from "./components/Footer";
 import ChainID from "./components/ChainID";
+import LogEvents from "./components/LogEvents";
 
 const App = () => {
   const [holders, setHolders] = useState([]);
@@ -39,6 +40,7 @@ const App = () => {
   };
 
   const getEvent = async () => {
+    // Get log events by contract address
     const tokenUrl =
       "https://api.covalenthq.com/v1/1/events/address/0xD417144312DbF50465b1C641d016962017Ef6240/?starting-block=14993520&ending-block=14993619&key=ckey_3ef3cefb5f2447cabfdc7d26599";
     const response = await fetch(tokenUrl);
@@ -172,12 +174,14 @@ const App = () => {
       labels: parsedData.data.items[0].volume_chart_30d.map((crypto) =>
         new Date(crypto.dt).toLocaleDateString()
       ),
+
       datasets: [
         {
           label: "Volume in USD",
-          data: parsedData.data.items[0].volume_chart_30d.map(
-            (crypto) => crypto.volume_quote
+          data: parsedData.data.items[0].volume_chart_30d.map((crypto) =>
+            (crypto.volume_quote / 1.0e6).toFixed(1)
           ),
+
           type: "line",
           borderColor: "blue",
           pointBackgroundColor: "#4d869f",
@@ -192,6 +196,7 @@ const App = () => {
           scales: {
             yAxes: [
               {
+                beginAtZero: false,
                 ticks: {
                   fontColor: "green",
                   fontSize: 18,
@@ -298,16 +303,17 @@ const App = () => {
           <Route path="/chains">
             <ChainID holders={holders} />
           </Route>
+          <Route path="/logs">
+            <LogEvents events={events} swapData={swapData} />
+          </Route>
           <Route path="/">
             <BodySection
               tokens={tokens}
-              events={events}
               rates={rates}
               // chartData={chartData}
               // pieData={pieData}
               quoteData={quoteData}
               volData={volData}
-              swapData={swapData}
             />
           </Route>
         </Switch>

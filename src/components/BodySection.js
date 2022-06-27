@@ -144,45 +144,7 @@ const BodySection = (props) => {
         </div>
       </section> */}
 
-      <section
-        className="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-3"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-      >
-        <div className="row">
-          <div className="col-sm-6">
-            <div className="table-responsive tableBg shadow-lg p-3 rounded">
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ color: "blue" }}>
-                      sender name
-                    </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      sender address
-                    </th>
-                  </tr>
-                </thead>
-                {props.events.map((event) => {
-                  return (
-                    <tbody>
-                      <tr>
-                        <td>{event.sender_name}</td>
-                        <td>{event.sender_address}</td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-              </table>
-            </div>
-          </div>
-          <div className="col-sm-5 m-2 bg shadow-lg rounded">
-            <div>
-              {props.swapData && <Line data={props.swapData} height={190} />}
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         {props.pieData && <Line data={props.pieData} />}

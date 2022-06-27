@@ -1,11 +1,11 @@
 import React from "react";
+// import { Line } from "react-chartjs-2";
 
-function NetworkExTk(props) {
+function LogEvents(props) {
   return (
     <>
       <section
         className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4 mt-5"
-        id="networkExTkTable"
         data-aos="fade-up"
         data-aos-duration="1000"
       >
@@ -14,7 +14,7 @@ function NetworkExTk(props) {
             style={{ color: "#1e1e67", textAlign: "center" }}
             className="py-2"
           >
-            Network Exchange Tokens on uniswap_v2
+            Latest Covalent Coin Log Events
           </h1>
           <div className="col-sm">
             <div className="table-responsive">
@@ -22,34 +22,23 @@ function NetworkExTk(props) {
                 <thead>
                   <tr>
                     <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Contract Name
+                      Tx Hash
                     </th>
                     <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Contract Address
+                      Raw Log Topics
                     </th>
                     <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Total Liquidity
-                    </th>
-                    <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Total Volume
-                    </th>
-                    <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Swap Count
+                      Type
                     </th>
                   </tr>
                 </thead>
-                {props.networkExTk.map((netExTk) => {
+                {props.events.map((event) => {
                   return (
                     <tbody>
                       <tr>
-                        <td>
-                          {netExTk.contract_name} (
-                          {netExTk.contract_ticker_symbol})
-                        </td>
-                        <td>{netExTk.contract_address}</td>
-                        <td>{"$"+((netExTk.total_liquidity)/ 1.0e+9).toFixed(2) + "B"}</td>
-                        <td>{"$"+((netExTk.total_volume_24h)/ 1.0e+9).toFixed(2) + "B"}</td>
-                        <td>{netExTk.swap_count_24h}</td>
+                        <td>{event.tx_hash}</td>
+                        <td>{(event.raw_log_topics).join(", ")}</td>
+                        <td>{event.decoded.name}</td>
                       </tr>
                     </tbody>
                   );
@@ -57,10 +46,15 @@ function NetworkExTk(props) {
               </table>
             </div>
           </div>
+          {/* <div className="col-sm-5 m-2 bg shadow-lg rounded">
+            <div>
+              {props.swapData && <Line data={props.swapData} height={190} />}
+            </div>
+          </div> */}
         </div>
       </section>
     </>
   );
 }
 
-export default NetworkExTk;
+export default LogEvents;

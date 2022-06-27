@@ -38,15 +38,9 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link d-flex align-items-center" href="/">
+                  <a className="nav-link d-flex align-items-center" href="/logs">
                     <i className="far fa-chart-bar fa-2x"></i>
-                    About
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link d-flex align-items-center" href="/">
-                    <i className="far fa-chart-bar fa-2x"></i>
-                    About
+                    Log Events
                   </a>
                 </li>
               </ul>
