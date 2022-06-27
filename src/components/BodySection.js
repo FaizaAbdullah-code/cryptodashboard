@@ -37,14 +37,16 @@ const BodySection = (props) => {
 
       <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
         <div className="row">
-          <div className="col-sm-5 m-2 bg shadow-lg p-3 mb-5 rounded">
-            <div>{props.volData && <Line data={props.volData} height={220}/>}</div>
+          <div className="col-sm-5 m-5 bg shadow-lg rounded">
+            <div>{props.volData && <Line data={props.volData} height={220} />}</div>
           </div>
-          <div className="col-5 m-2 bg shadow-lg p-3 mb-5 rounded">
+          <div className="col-sm-5 m-5 bg shadow-lg rounded">
             <div>{props.quoteData && <Line data={props.quoteData} height={220} />}</div>
           </div>
         </div>
       </section>
+
+
 
       {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
         <div className="row">
@@ -59,7 +61,7 @@ const BodySection = (props) => {
         id="tokenTable"
       >
         <div className="row">
-          <h1 style={{ color: "white", textAlign: "center" }}>
+          <h1 style={{ color: "black", textAlign: "center" }} className="py-5">
             Top 10 Transactions
           </h1>
           <div className="col-sm">
@@ -108,7 +110,7 @@ const BodySection = (props) => {
         id="networkExTkTable"
       >
         <div className="row py-3">
-          <h1 style={{ color: "white", textAlign: "center" }}>
+          <h1 style={{ color: "black", textAlign: "center" }} className="py-5">
             Network Exchange Tokens on uniswap_v2
           </h1>
           <div className="col-sm">
@@ -156,31 +158,35 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2 tableBg mt-5">
-        <div className="col-sm-5">
-          <div className="table-responsive">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col" style={{ color: "blue" }}>
-                   Chain ID
-                  </th>
-                  <th scope="col" style={{ color: "blue" }}>
-                  Name
-                  </th>
-                </tr>
-              </thead>
-              {props.holders.map((holder) => {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>{holder.chain_id}</td>
-                      <td>{holder.name}</td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>
+
+      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
+        <div className="row">
+
+          <div className="col-sm-5">
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" style={{ color: "blue" }}>
+                      Chain ID
+                    </th>
+                    <th scope="col" style={{ color: "blue" }}>
+                      Name
+                    </th>
+                  </tr>
+                </thead>
+                {props.holders.map((holder) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>{holder.chain_id}</td>
+                        <td>{holder.name}</td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
           </div>
         </div>
       </section>
@@ -208,31 +214,39 @@ const BodySection = (props) => {
         </div>
       </section> */}
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-2 mt-5 tableBg">
-        <div className="col-sm-6">
-          <div className="table-responsive">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col" style={{ color: "blue" }}>
-                    sender name
-                  </th>
-                  <th scope="col" style={{ color: "blue" }}>
-                    sender address
-                  </th>
-                </tr>
-              </thead>
-              {props.events.map((event) => {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>{event.sender_name}</td>
-                      <td>{event.sender_address}</td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>
+
+
+      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-3">
+        <div className="row">
+
+          <div className="col-sm-6">
+            <div className="table-responsive tableBg shadow-lg p-3 rounded">
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" style={{ color: "blue" }}>
+                      sender name
+                    </th>
+                    <th scope="col" style={{ color: "blue" }}>
+                      sender address
+                    </th>
+                  </tr>
+                </thead>
+                {props.events.map((event) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>{event.sender_name}</td>
+                        <td>{event.sender_address}</td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
+          </div>
+          <div className="col-sm-5 m-2 bg shadow-lg rounded">
+            <div>{props.swapData && <Line data={props.swapData} height={190} />}</div>
           </div>
         </div>
       </section>

@@ -15,6 +15,7 @@ const App = () => {
   // const [pieData, setPieData] = useState('');
   const [quoteData, setQuoteData] = useState("");
   const [volData, setVolData] = useState("");
+  const [swapData, setSwapData] = useState("");
 
   const getTokenHolders = async () => {
     const holderUrl =
@@ -179,7 +180,7 @@ const App = () => {
           data: parsedData.data.items[0].volume_chart_30d.map(
             (crypto) => crypto.volume_quote
           ),
-
+          type: 'line',
           borderColor: 'blue',
             pointBackgroundColor: "#4d869f",
             pointBorderColor: "blue",
@@ -205,6 +206,52 @@ const App = () => {
       
     });
   };
+
+  const fetchSwap = async () => {
+    const response = await fetch(
+      "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/ecosystem/?key=ckey_3ef3cefb5f2447cabfdc7d26599"
+    );
+    const parsedData = await response.json();
+    // console.log(parsedData.data.items[0].volume_chart_30d);
+    setSwapData({
+      labels: parsedData.data.items[0].volume_chart_30d.map((crypto) =>
+        new Date(crypto.dt).toLocaleDateString()
+      ),
+      datasets: [
+        {
+
+          label: "Swap count",
+          data: parsedData.data.items[0].volume_chart_30d.map(
+            (crypto) => crypto.swap_count_24
+          ),
+          type: 'bar',
+          borderColor: 'blue',
+            pointBackgroundColor: "#4d869f",
+            pointBorderColor: "blue",
+            pointHoverBackgroundColor: "#4d869f",
+            pointHoverBorderColor: "#fff",
+            pointRadius: 4,
+            pointHoverRadius: 4,
+            fill: false,
+          borderWidth: 2,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  fontColor: "green",
+                  fontSize: 18,
+                },
+              },
+            ],
+          
+          },
+        },
+      ],
+      
+    });
+  };
+
+  
 
   // const fetchDate = async () => {
   //   const response = await fetch(
@@ -243,6 +290,7 @@ const App = () => {
     // fetchPrices();
     fetchQuote();
     fetchVol();
+    fetchSwap();
     // fetchDate();
   }, []);
 
@@ -260,6 +308,7 @@ const App = () => {
         // pieData={pieData}
         quoteData={quoteData}
         volData={volData}
+        swapData={swapData}
       />
     </>
   );

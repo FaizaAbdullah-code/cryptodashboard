@@ -1,19 +1,19 @@
 $primary-color: #ffff;
-$secondary-color:#1e1e67;
+$secondary-color: #1e1e67;
 $third-color: #271447;
 // $third-color: #7b1975;
-$forth-color:#2c2f4c;
-$fifth-color:#e5b7b7;
+$forth-color: #2c2f4c;
+$fifth-color: #e5b7b7;
 
 body {
   font-size: 0.875rem;
   background-color: #eef1f0;
-  @media (max-width:911px) {
-    display:none;
+  @media (max-width: 911px) {
+    display: none;
   }
 }
 
-.bg{
+.bg {
   background-color: $primary-color;
   border-radius: 10px;
 }
@@ -27,7 +27,6 @@ body {
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
   background: $forth-color;
-
 }
 
 @media (max-width: 767px) {
@@ -81,7 +80,6 @@ body {
   text-transform: uppercase;
 }
 
-
 .navbar {
   background-color: $secondary-color;
   border-bottom: 0.15px solid $third-color;
@@ -110,7 +108,6 @@ body {
     border-radius: 50%;
     padding: 8px;
   }
-
 }
 #search {
   color: $secondary-color;
@@ -135,18 +132,14 @@ body {
   }
 }
 
-
-
-.tableBg{
+.tableBg {
   background-color: $primary-color;
-table.table tr th,
-table.table tr td {
-  border-color: blue;
-  padding: 15px;
-  border: 1px solid #ddd;
-
-}
-
+  table.table tr th,
+  table.table tr td {
+    border-color: blue;
+    padding: 15px;
+    border: 1px solid #ddd;
+  }
 }
 .card-box {
   position: relative;
@@ -209,10 +202,10 @@ table.table tr td {
 .card-box:hover .card-box-footer {
   background: rgba(0, 0, 0, 0.3);
 }
-.address-sec{  
+.address-sec {
   .address-box {
     position: relative;
-    background-color:$secondary-color;
+    background-color: $secondary-color;
     color: $third-color;
     padding: 4px 1px 1px;
     margin: 5px 0px;
@@ -229,10 +222,10 @@ table.table tr td {
     .inner {
       padding: 5px 10px 0 10px;
     }
-    .address{
+    .address {
       font-size: 12px;
     }
-  
+
     .icon {
       position: absolute;
       top: auto;
@@ -251,8 +244,8 @@ footer {
   a {
     text-decoration: none;
     color: $third-color;
-      &:hover {
-          color: $primary-color;
-      }
+    &:hover {
+      color: $primary-color;
+    }
   }
 }
