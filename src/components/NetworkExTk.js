@@ -6,6 +6,8 @@ function NetworkExTk(props) {
       <section
         className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4 mt-5"
         id="networkExTkTable"
+        data-aos="fade-up"
+        data-aos-duration="1000"
       >
         <div className="row">
           <h1
@@ -46,8 +48,8 @@ function NetworkExTk(props) {
                           {netExTk.contract_ticker_symbol})
                         </td>
                         <td>{netExTk.contract_address}</td>
-                        <td>{netExTk.total_liquidity}</td>
-                        <td>{netExTk.total_volume_24h}</td>
+                        <td>{"$"+((netExTk.total_liquidity)/ 1.0e+9).toFixed(2) + "B"}</td>
+                        <td>{"$"+((netExTk.total_volume_24h)/ 1.0e+9).toFixed(2) + "B"}</td>
                         <td>{netExTk.swap_count_24h}</td>
                       </tr>
                     </tbody>

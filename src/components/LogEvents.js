@@ -1,6 +1,7 @@
 import React from "react";
+// import { Line } from "react-chartjs-2";
 
-function ChainID(props) {
+function LogEvents(props) {
   return (
     <>
       <section
@@ -13,7 +14,7 @@ function ChainID(props) {
             style={{ color: "#1e1e67", textAlign: "center" }}
             className="py-2"
           >
-            Chain IDs
+            Latest Covalent Coin Log Events
           </h1>
           <div className="col-sm">
             <div className="table-responsive">
@@ -21,26 +22,23 @@ function ChainID(props) {
                 <thead>
                   <tr>
                     <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Label
+                      Tx Hash
                     </th>
                     <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Chain ID
+                      Raw Log Topics
                     </th>
                     <th scope="col" style={{ color: "#2c2f4c" }}>
-                      Name
+                      Type
                     </th>
                   </tr>
                 </thead>
-                {props.holders.map((holder) => {
+                {props.events.map((event) => {
                   return (
-                    <tbody key={holder.id}>
+                    <tbody>
                       <tr>
-                        <td>
-                          <img src={holder.logo_url} width="24px" alt="logo" />{" "}
-                          {holder.label}
-                        </td>
-                        <td>{holder.chain_id}</td>
-                        <td>{holder.name}</td>
+                        <td>{event.tx_hash}</td>
+                        <td>{(event.raw_log_topics).join(", ")}</td>
+                        <td>{event.decoded.name}</td>
                       </tr>
                     </tbody>
                   );
@@ -48,10 +46,15 @@ function ChainID(props) {
               </table>
             </div>
           </div>
+          {/* <div className="col-sm-5 m-2 bg shadow-lg rounded">
+            <div>
+              {props.swapData && <Line data={props.swapData} height={190} />}
+            </div>
+          </div> */}
         </div>
       </section>
     </>
   );
 }
 
-export default ChainID;
+export default LogEvents;

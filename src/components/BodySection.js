@@ -5,7 +5,11 @@ import { Line } from "react-chartjs-2";
 const BodySection = (props) => {
   return (
     <div>
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-3 py-2">
+      <section
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-3 py-2"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <div className="container mt-5">
           <div className="row">
             {props.rates.map((rate) => {
@@ -32,7 +36,11 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 py-2">
+      <section
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-3 py-2"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <div className="row d-flex justify-content-center">
           <div className="col-sm-5 me-3 bg-light shadow-md rounded">
             <h3 className="text-center py-3">Volume by Date</h3>
@@ -60,6 +68,8 @@ const BodySection = (props) => {
       <section
         className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4"
         id="tokenTable"
+        data-aos="fade-up"
+        data-aos-duration="1000"
       >
         <div className="row">
           <h1
@@ -133,41 +143,7 @@ const BodySection = (props) => {
         </div>
       </section> */}
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-3">
-        <div className="row">
-          <div className="col-sm-6">
-            <div className="table-responsive tableBg shadow-lg p-3 rounded">
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col" style={{ color: "blue" }}>
-                      sender name
-                    </th>
-                    <th scope="col" style={{ color: "blue" }}>
-                      sender address
-                    </th>
-                  </tr>
-                </thead>
-                {props.events.map((event) => {
-                  return (
-                    <tbody>
-                      <tr>
-                        <td>{event.sender_name}</td>
-                        <td>{event.sender_address}</td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-              </table>
-            </div>
-          </div>
-          <div className="col-sm-5 m-2 bg shadow-lg rounded">
-            <div>
-              {props.swapData && <Line data={props.swapData} height={190} />}
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         {props.pieData && <Line data={props.pieData} height="100" />}
