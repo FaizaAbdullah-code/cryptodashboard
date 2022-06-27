@@ -3,7 +3,11 @@ import React from "react";
 function ChainID(props) {
   return (
     <>
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4 mt-5">
+      <section
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4 mt-5"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <div className="row">
           <h1
             style={{ color: "#1e1e67", textAlign: "center" }}
@@ -29,7 +33,7 @@ function ChainID(props) {
                 </thead>
                 {props.holders.map((holder) => {
                   return (
-                    <tbody>
+                    <tbody key={holder.id}>
                       <tr>
                         <td>
                           <img src={holder.logo_url} width="24px" alt="logo" />{" "}

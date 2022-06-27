@@ -6,6 +6,8 @@ function NetworkExTk(props) {
       <section
         className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4 mt-5"
         id="networkExTkTable"
+        data-aos="fade-up"
+        data-aos-duration="1000"
       >
         <div className="row">
           <h1
