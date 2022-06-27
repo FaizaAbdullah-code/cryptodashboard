@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/cryptodashboard/static/css/main.be0a493f.chunk.css",
+    "main.js": "/cryptodashboard/static/js/main.8e8e9a0a.chunk.js",
+    "main.js.map": "/cryptodashboard/static/js/main.8e8e9a0a.chunk.js.map",
+    "runtime-main.js": "/cryptodashboard/static/js/runtime-main.4bb71aa7.js",
+    "runtime-main.js.map": "/cryptodashboard/static/js/runtime-main.4bb71aa7.js.map",
+    "static/js/2.7504909b.chunk.js": "/cryptodashboard/static/js/2.7504909b.chunk.js",
+    "static/js/2.7504909b.chunk.js.map": "/cryptodashboard/static/js/2.7504909b.chunk.js.map",
+    "static/js/3.f642cc9e.chunk.js": "/cryptodashboard/static/js/3.f642cc9e.chunk.js",
+    "static/js/3.f642cc9e.chunk.js.map": "/cryptodashboard/static/js/3.f642cc9e.chunk.js.map",
+    "index.html": "/cryptodashboard/index.html",
+    "static/css/main.be0a493f.chunk.css.map": "/cryptodashboard/static/css/main.be0a493f.chunk.css.map",
+    "static/js/2.7504909b.chunk.js.LICENSE.txt": "/cryptodashboard/static/js/2.7504909b.chunk.js.LICENSE.txt",
+    "static/media/logo.c1b0f3bc.png": "/cryptodashboard/static/media/logo.c1b0f3bc.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4bb71aa7.js",
+    "static/js/2.7504909b.chunk.js",
+    "static/css/main.be0a493f.chunk.css",
+    "static/js/main.8e8e9a0a.chunk.js"
+  ]
+}
