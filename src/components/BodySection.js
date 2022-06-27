@@ -145,9 +145,9 @@ const BodySection = (props) => {
 
       
 
-      <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         {props.pieData && <Line data={props.pieData} height="100" />}
-      </section>
+      </section> */}
     </div>
   );
 };
