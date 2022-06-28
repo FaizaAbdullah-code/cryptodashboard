@@ -27,7 +27,7 @@ const Sidebar = () => {
                     to="/network"
                   >
                     <i className="fa fa-exchange me-2 fa-2x"></i>
-                     Network Exchange Tokens
+                    Network Exchange Tokens
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -35,21 +35,8 @@ const Sidebar = () => {
                     className="nav-link d-flex align-items-center"
                     to="/chains"
                   >
-                    <i
-                      className="fa fa-id-card me-2 fa-2x"
-                    ></i>
-                     Chain IDs
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link d-flex align-items-center"
-                    to="/nft"
-                  >
-                    <i
-                      className="fa fa-money me-2 fa-2x"
-                    ></i>
-                    NFT Transactions
+                    <i className="fa fa-id-card me-2 fa-2x"></i>
+                    Chain IDs
                   </Link>
                 </li>
                 <li className="nav-item">

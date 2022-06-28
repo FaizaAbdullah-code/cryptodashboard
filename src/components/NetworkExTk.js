@@ -39,7 +39,6 @@ function NetworkExTk(props) {
                   </tr>
                 </thead>
                 {props.networkExTk.map((netExTk) => {
-                 
                   return (
                     <tbody>
                       <tr>
@@ -48,8 +47,16 @@ function NetworkExTk(props) {
                           {netExTk.contract_ticker_symbol})
                         </td>
                         <td>{netExTk.contract_address}</td>
-                        <td>{"$"+((netExTk.total_liquidity)/ 1.0e+9).toFixed(2) + "B"}</td>
-                        <td>{"$"+((netExTk.total_volume_24h)/ 1.0e+9).toFixed(2) + "B"}</td>
+                        <td>
+                          {"$" +
+                            (netExTk.total_liquidity / 1.0e9).toFixed(2) +
+                            "B"}
+                        </td>
+                        <td>
+                          {"$" +
+                            (netExTk.total_volume_24h / 1.0e9).toFixed(2) +
+                            "B"}
+                        </td>
                         <td>{netExTk.swap_count_24h}</td>
                       </tr>
                     </tbody>

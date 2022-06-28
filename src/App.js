@@ -61,7 +61,6 @@ const App = () => {
     console.log(parsedData.data.items);
   };
 
-  
   const fetchQuote = async () => {
     const response = await fetch(
       "https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/USD/0xD417144312DbF50465b1C641d016962017Ef6240/?quote-currency=USD&format=JSON&from=2022-06-01&to=2022-06-27&prices-at-asc=true&key=ckey_3ef3cefb5f2447cabfdc7d26599"
@@ -159,7 +158,6 @@ const App = () => {
           data: parsedData.data.items[0].volume_chart_30d.map(
             (crypto) => crypto.swap_count_24
           ),
-         
 
           type: "bar",
           borderColor: "blue",
@@ -171,21 +169,22 @@ const App = () => {
           pointHoverRadius: 4,
           fill: false,
           borderWidth: 2,
-          options : {
+          options: {
             scales: {
-              yAxes: [{
-                scaleLabel: {
-                  display: true,
-                  labelString: 'probability'
-                }
-              }]
-            }     
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "probability",
+                  },
+                },
+              ],
+            },
           },
         },
       ],
     });
   };
-
 
   useEffect(() => {
     getTokenHolders();
