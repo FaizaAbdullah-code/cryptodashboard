@@ -12,13 +12,12 @@ const Sidebar = () => {
           >
             <div className="position-sticky pt-4">
               <ul className="nav flex-column" id="nav_accordion">
-                
                 <li className="nav-item">
                   <Link
                     className="nav-link d-flex align-items-center active"
                     to="/"
                   >
-                    <i className="fas fa-th-large" style={{fontSize:"25px"}}></i>
+                    <i className="fa fa-th-large me-2 fa-2x"></i>
                     Dashboard
                   </Link>
                 </li>
@@ -27,30 +26,40 @@ const Sidebar = () => {
                     className="nav-link d-flex align-items-center"
                     to="/network"
                   >
-                    <i className="fa fa-exchange me-3 ms-2" style={{fontSize:"25px"}} aria-hidden="true"></i>
+                    <i className="fa fa-exchange me-2 fa-2x"></i>
                      Network Exchange Tokens
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link d-flex align-items-center" to="/chains">
-                  <i className="fa fa-id-card me-3 ms-2" style={{fontSize:"20px"}} aria-hidden="true"></i>
-                    Chain IDs
+                  <Link
+                    className="nav-link d-flex align-items-center"
+                    to="/chains"
+                  >
+                    <i
+                      className="fa fa-id-card me-2 fa-2x"
+                    ></i>
+                     Chain IDs
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link d-flex align-items-center" to="/about">
-                  <i className="fa fa-info-circle me-3 ms-2" style={{fontSize:"25px"}} aria-hidden="true"></i>
-                    About
+                  <Link
+                    className="nav-link d-flex align-items-center"
+                    to="/nft"
+                  >
+                    <i
+                      className="fa fa-money me-2 fa-2x"
+                    ></i>
+                    NFT Transactions
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link d-flex align-items-center" href="/"/>
-                  <i className="fa-thin fa-circle-info"></i>
-                    About
-                  <a className="nav-link d-flex align-items-center" href="/logs">
-                    <i className="far fa-chart-bar fa-2x"></i>
+                  <Link
+                    className="nav-link d-flex align-items-center"
+                    to="/logs"
+                  >
+                    <i className="fa fa-calendar-o me-2 fa-2x"></i>
                     Log Events
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

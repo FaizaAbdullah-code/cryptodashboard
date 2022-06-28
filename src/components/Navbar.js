@@ -39,12 +39,11 @@ const Navbar = (props) => {
         <div className="d-flex align-items-center icon-display">
           <a
             className="me-2"
-            href="/"
-            id="medium"
+            href="https://www.techaeblogs.live"
             role="button"
             aria-expanded="false"
           >
-            <i className="fab fa-medium icon"></i>
+            <i className="fas fa-globe icon"></i>
           </a>
 
           <a
