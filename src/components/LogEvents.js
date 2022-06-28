@@ -1,5 +1,4 @@
 import React from "react";
-// import { Line } from "react-chartjs-2";
 
 function LogEvents(props) {
   return (
@@ -46,11 +45,6 @@ function LogEvents(props) {
               </table>
             </div>
           </div>
-          {/* <div className="col-sm-5 m-2 bg shadow-lg rounded">
-            <div>
-              {props.swapData && <Line data={props.swapData} height={190} />}
-            </div>
-          </div> */}
         </div>
       </section>
     </>

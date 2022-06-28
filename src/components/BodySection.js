@@ -1,6 +1,5 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-// import { Bar } from "react-chartjs-2";
 
 const BodySection = (props) => {
   return (
@@ -60,14 +59,6 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-3">
-        <div className="row">
-          <div className="col-6">
-            <div>{props.quoteData && <Line data={props.quoteData} />}</div>
-          </div>
-        </div>
-      </section> */}
-
       <section
         className="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-4"
         id="tokenTable"
@@ -122,33 +113,6 @@ const BodySection = (props) => {
         </div>
       </section>
 
-      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-5 py-3">
-        <div className="container mt-5">
-          <div className="row">
-            {props.holders.map((holder) => {
-              return (
-                <div className="col-lg-3 col-sm-6 text-white">
-                  <div className="address-sec">
-                    <div className="address-box">
-                      <div className="inner">
-                        <p className="address"></p>
-                        <h6></h6>
-                      </div>
-                      <div className="icon">
-                        <i className="fas fa-wallet" aria-hidden="true"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        {props.pieData && <Line data={props.pieData} height="100" />}
-      </section> */}
     </div>
   );
 };

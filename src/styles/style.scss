@@ -12,11 +12,6 @@ body {
   }
 }
 
-// .bg {
-//   background-color: $primary-color;
-//   border-radius: 10px;
-// }
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -131,15 +126,6 @@ body {
   }
 }
 
-// .tableBg {
-//   background-color: $primary-color;
-//   table.table tr th,
-//   table.table tr td {
-//     border-color: blue;
-//     padding: 15px;
-//     border: 1px solid #ddd;
-//   }
-// }
 .card-box {
   position: relative;
   background-color: $primary-color;
@@ -150,7 +136,6 @@ body {
   border-radius: 10px;
   &:hover {
     text-decoration: none;
-    // color: #f1f1f1;
     .icon i {
       font-size: 100px;
       transition: 1s;
