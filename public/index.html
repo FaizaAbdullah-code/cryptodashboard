@@ -20,10 +20,35 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Covalent Analytics Dashboard</title>
 </head>
+<style>
+    #mcjs {
+    z-index: 99999;
+    position: relative;
+  }
 
+  .loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loader {
+    display: inline-block;
+    position: relative;
+  }
+</style>
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="root">
+    <div class="loader-wrapper">
+      <img src="./loader.gif" alt="loader" class="loader" />
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"
     integrity="sha256-EJb5T/UXVVwHY/BJ33bAFqyyzsAqdl4ZCElh3UYvaLk=" crossorigin="anonymous"></script>
@@ -74,9 +99,15 @@
         });
     }); // DOMContentLoaded
   </script>
-  <script>
-
-  </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(window).on("load", function () {
+    $(".loader-wrapper").fadeOut();
+  });
+  window.addEventListener('load', (event) => {
+    console.log('page is fully loaded');
+  });
+</script>
 </body>
 
 </html>
