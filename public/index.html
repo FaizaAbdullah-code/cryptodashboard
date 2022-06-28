@@ -21,7 +21,7 @@
   <title>Covalent Analytics Dashboard</title>
 </head>
 <style>
-    #mcjs {
+  #mcjs {
     z-index: 99999;
     position: relative;
   }
@@ -42,21 +42,30 @@
     position: relative;
   }
 </style>
+
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root">
     <div class="loader-wrapper">
-      <img src="./loader.gif" alt="loader" class="loader" />
+      <img src="https://cdn.dribbble.com/users/3337757/screenshots/6825268/076_-loading_animated_dribbble_copy.gif" alt="loader"
+        class="loader" />
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"
-    integrity="sha256-EJb5T/UXVVwHY/BJ33bAFqyyzsAqdl4ZCElh3UYvaLk=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+  <script>
+    $(window).on("load", function () {
+      $(".loader-wrapper").fadeOut();
+    });
+    window.addEventListener('load', (event) => {
+      console.log('page is fully loaded');
+    });
+  </script>
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
       AOS.init();
@@ -71,43 +80,9 @@
           this.className += " active";
         });
       }
-      document
-        .querySelectorAll(".sidebar .nav-link")
-        .forEach(function (element) {
-          element.addEventListener("click", function (e) {
-            let nextEl = element.nextElementSibling;
-            let parentEl = element.parentElement;
-
-            if (nextEl) {
-              e.preventDefault();
-              let mycollapse = new bootstrap.Collapse(nextEl);
-
-              if (nextEl.classList.contains("show")) {
-                mycollapse.hide();
-              } else {
-                mycollapse.show();
-                // find other submenus with class=show
-                var opened_submenu =
-                  parentEl.parentElement.querySelector(".submenu.show");
-                // if it exists, then close all of them
-                if (opened_submenu) {
-                  new bootstrap.Collapse(opened_submenu);
-                }
-              }
-            }
-          });
-        });
     }); // DOMContentLoaded
   </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  $(window).on("load", function () {
-    $(".loader-wrapper").fadeOut();
-  });
-  window.addEventListener('load', (event) => {
-    console.log('page is fully loaded');
-  });
-</script>
+
 </body>
 
 </html>
