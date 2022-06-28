@@ -6,7 +6,7 @@ $fifth-color: #e5b7b7;
 
 body {
   font-size: 0.875rem;
-  background-color: #eef1f0;
+  background-color: $primary-color;
   @media (max-width: 911px) {
     display: none;
   }

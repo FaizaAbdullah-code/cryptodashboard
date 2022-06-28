@@ -49,7 +49,14 @@
       <img src="./loader.gif" alt="loader" class="loader" />
     </div>
   </div>
-
+  <script>
+    $(window).on("load", function () {
+      $(".loader-wrapper").fadeOut();
+    });
+    window.addEventListener('load', (event) => {
+      console.log('page is fully loaded');
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"
     integrity="sha256-EJb5T/UXVVwHY/BJ33bAFqyyzsAqdl4ZCElh3UYvaLk=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -100,14 +107,7 @@
     }); // DOMContentLoaded
   </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  $(window).on("load", function () {
-    $(".loader-wrapper").fadeOut();
-  });
-  window.addEventListener('load', (event) => {
-    console.log('page is fully loaded');
-  });
-</script>
+
 </body>
 
 </html>
