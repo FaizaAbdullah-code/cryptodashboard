@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cryptodashboard/static/css/main.3e8acf08.chunk.css",
+    "main.css": "/cryptodashboard/static/css/main.7ef72ff7.chunk.css",
     "main.js": "/cryptodashboard/static/js/main.ada9681b.chunk.js",
     "main.js.map": "/cryptodashboard/static/js/main.ada9681b.chunk.js.map",
     "runtime-main.js": "/cryptodashboard/static/js/runtime-main.4bb71aa7.js",
@@ -10,14 +10,14 @@
     "static/js/3.f642cc9e.chunk.js": "/cryptodashboard/static/js/3.f642cc9e.chunk.js",
     "static/js/3.f642cc9e.chunk.js.map": "/cryptodashboard/static/js/3.f642cc9e.chunk.js.map",
     "index.html": "/cryptodashboard/index.html",
-    "static/css/main.3e8acf08.chunk.css.map": "/cryptodashboard/static/css/main.3e8acf08.chunk.css.map",
+    "static/css/main.7ef72ff7.chunk.css.map": "/cryptodashboard/static/css/main.7ef72ff7.chunk.css.map",
     "static/js/2.58ee7ed9.chunk.js.LICENSE.txt": "/cryptodashboard/static/js/2.58ee7ed9.chunk.js.LICENSE.txt",
     "static/media/logo.c1b0f3bc.png": "/cryptodashboard/static/media/logo.c1b0f3bc.png"
   },
   "entrypoints": [
     "static/js/runtime-main.4bb71aa7.js",
     "static/js/2.58ee7ed9.chunk.js",
-    "static/css/main.3e8acf08.chunk.css",
+    "static/css/main.7ef72ff7.chunk.css",
     "static/js/main.ada9681b.chunk.js"
   ]
 }
