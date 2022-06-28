@@ -17,7 +17,6 @@ const App = () => {
   const [networkExTk, setNetworkExTk] = useState([]);
   const [quoteData, setQuoteData] = useState("");
   const [volData, setVolData] = useState("");
-  const [swapData, setSwapData] = useState("");
 
   const getTokenHolders = async () => {
     const holderUrl =
@@ -143,49 +142,6 @@ const App = () => {
     });
   };
 
-  const fetchSwap = async () => {
-    const response = await fetch(
-      "https://api.covalenthq.com/v1/1/xy=k/uniswap_v2/ecosystem/?key=ckey_3ef3cefb5f2447cabfdc7d26599"
-    );
-    const parsedData = await response.json();
-    setSwapData({
-      labels: parsedData.data.items[0].volume_chart_30d.map((crypto) =>
-        new Date(crypto.dt).toLocaleDateString()
-      ),
-      datasets: [
-        {
-          label: "Swap count",
-          data: parsedData.data.items[0].volume_chart_30d.map(
-            (crypto) => crypto.swap_count_24
-          ),
-
-          type: "bar",
-          borderColor: "blue",
-          pointBackgroundColor: "#4d869f",
-          pointBorderColor: "blue",
-          pointHoverBackgroundColor: "#4d869f",
-          pointHoverBorderColor: "#fff",
-          pointRadius: 4,
-          pointHoverRadius: 4,
-          fill: false,
-          borderWidth: 2,
-          options: {
-            scales: {
-              yAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: "probability",
-                  },
-                },
-              ],
-            },
-          },
-        },
-      ],
-    });
-  };
-
   useEffect(() => {
     getTokenHolders();
     getToken();
@@ -194,7 +150,7 @@ const App = () => {
     getNetworkExTkRequest();
     fetchQuote();
     fetchVol();
-    fetchSwap();
+
   }, []);
 
   return (
@@ -210,7 +166,7 @@ const App = () => {
             <ChainID holders={holders} />
           </Route>
           <Route path="/logs">
-            <LogEvents events={events} swapData={swapData} />
+            <LogEvents events={events} />
           </Route>
           <Route path="/">
             <BodySection
