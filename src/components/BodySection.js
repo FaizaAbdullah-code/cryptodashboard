@@ -47,13 +47,25 @@ const BodySection = (props) => {
           <div className="col-sm-5 me-3 bg-light shadow-md rounded">
             <h3 className="text-center py-3">Volume by Date</h3>
             <div>
-              {props.volData && <Line data={props.volData} height={220} />}
+              {props.volData && (
+                <Line
+                  data={props.volData}
+                  key={props.volData.id}
+                  height={220}
+                />
+              )}
             </div>
           </div>
           <div className="col-sm-5 bg-light shadow-md rounded">
             <h3 className="text-center py-3">Price by Date</h3>
             <div>
-              {props.quoteData && <Line data={props.quoteData} height={220} />}
+              {props.quoteData && (
+                <Line
+                  data={props.quoteData}
+                  key={props.quoteData.id}
+                  height={220}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -96,7 +108,7 @@ const BodySection = (props) => {
                 </thead>
                 {props.tokens.map((token) => {
                   return (
-                    <tbody>
+                    <tbody key={token.id}>
                       <tr>
                         <td>{token.from_address}</td>
                         <td>{token.to_address}</td>
@@ -112,7 +124,6 @@ const BodySection = (props) => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };

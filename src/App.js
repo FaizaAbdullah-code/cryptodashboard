@@ -57,7 +57,7 @@ const App = () => {
     const parsedData = await response.json();
 
     setNetworkExTk(parsedData.data.items);
-    console.log(parsedData.data.items);
+    // console.log(parsedData.data.items);
   };
 
   const fetchQuote = async () => {
@@ -150,7 +150,6 @@ const App = () => {
     getNetworkExTkRequest();
     fetchQuote();
     fetchVol();
-
   }, []);
 
   return (
