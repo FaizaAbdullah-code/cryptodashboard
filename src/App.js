@@ -160,22 +160,7 @@ const App = () => {
             (crypto) => crypto.swap_count_24
           ),
          
-        //   options:{
-        //     plugins: {
-        //         title: {
-        //             display: true,
-        //             align: 'start',
-        //             color:'red',
-        //             text: 'Bitcoin Mining Difficulty'
-        //         }
-        //     }
-        // },
-        options : {
-          title: {
-                  display: true,
-                  text: 'TITLE HERE'
-              }
-          },
+
           type: "bar",
           borderColor: "blue",
           pointBackgroundColor: "#4d869f",
@@ -186,15 +171,15 @@ const App = () => {
           pointHoverRadius: 4,
           fill: false,
           borderWidth: 2,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  fontColor: "green",
-                  fontSize: 18,
-                },
-              },
-            ],
+          options : {
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'probability'
+                }
+              }]
+            }     
           },
         },
       ],
